@@ -1,0 +1,18 @@
+<template>
+    <lightning-card title={productName}>
+        <template if:true={loaded}>
+            <template if:true={hasChildProducts}>
+                <template for:each={features} for:item="feature">
+                    <c-feature-cards key={feature.id} featuredetails={feature} class="slds-m-around_small"></c-feature-cards>
+                </template>
+            </template>
+            <template if:false={hasChildProducts}>
+                <div class="slds-text-body_regular slds-text-color_destructive">This product is not a bundle</div>
+            </template>
+        </template>
+        <template if:false={loaded}>
+            <lightning-spinner alternative-text="Loading"></lightning-spinner>
+        </template>
+        
+    </lightning-card>
+</template>
